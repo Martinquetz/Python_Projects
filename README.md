@@ -127,7 +127,7 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   plt.show
 ```
 
-**  - Violin plot of all numerical variables**
+**- Violin plot of all numerical variables**
 ```py
   # Violinplot of each numeriacal feature
   plt.figure(figsize=(14, len(numerical_columns)*3))
