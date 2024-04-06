@@ -28,11 +28,43 @@ Python programming language and its data analysis libraries, including Pandas, N
 
 ### **Data Cleaning and Preparation**
 The dataset underwent thorough cleaning and preparation to ensure data quality and consistency. Tasks included handling missing values, removing duplicates, standardizing data formats, and encoding categorical variables. This process aimed to create a clean and structured dataset suitable for analysis.
-#### _I Read The Dataset, View, Checked the data type & Summary Statistics, and Cleaned it_
+#### _Read The Dataset and View it_
 ```py
   # import the car data
   df = pd.read_csv(r"C:\Users\Martin\Downloads\car_prices.csv", error_bad_lines=False, warn_bad_lines=True)
   df.head()
+```
+#### _Checked the data type & Summary Statistics_
+```py
+  # Check the data info i.e. shape & data type
+  df.info()
+  # Check the shape
+  df.shape
+```
+
+#### _Dropped Null Values & Check the Summary Statistics_
+```py
+    #Removing all rows with instances of null values
+    df.dropna(inplace=True)
+    
+    # Check the df for duplicate values
+    df.duplicated().sum()
+    
+    # Check for statistical details of the df
+    df.describe().round()
+```
+
+#### _Transform the dataframe i.e., add, remove, and melt relevant columns_
+```py
+  # Convert saledate type to datetime
+  df["saledate"] = pd.to_datetime(df["saledate"])
+  
+  # split day of week from from sale date
+  df["day"] = df["saledate"].apply(lambda saledate: saledate.split()[0])
+  
+  # Use lambda and .apply to create new columns "Hour", "Month", and "Day of Week" through extracting them from the saledate
+  df["sale month"] = df["saledate"].apply(lambda time: time.month)  # Extracts month from the saledate
+  df["sale year"] = df["saledate"].apply(lambda time: time.year)  # Extracts day of week from the saledate
 ```
 
 
