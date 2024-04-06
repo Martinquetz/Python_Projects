@@ -240,7 +240,7 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   #plt.xticks(rotation=90) :- Although this code sets the xticks at 90 degree, it however, lists all the x variables first before the chart
 ```
 
- - Chart of 30 most Expensive Brands
+ - Chart of 30 Most Expensive Brands
 ```py
   # Show cars Makes average prices. Group df by car's year of manufactured
   dfg_make=df.groupby("Make")["Price"].mean().round().sort_values(ascending=False) # converts to series
@@ -260,7 +260,7 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
 
  - Trend of Car Prices Over Time
 ```py
-  # Show how cars prices have trended over the years. Group df by car's year of manufactured
+  # Show how car prices have trended over the years. Group df by car's year of manufactured
   dfg=df.groupby("Car Year")["Price"].mean().round() # converts to series
   
   # plot the line chart
@@ -270,25 +270,88 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   plt.ylabel('Avg. Car Prices ($)')
 ```
 
- - Violin plot of all numerical variables**
+ - Checking the Distribution of Prices by Transmission Type
 ```py
+  # Create an histogram of the selling Price
+  plt.figure(figsize=(10,6))
+  sns.histplot(data=df,x="Price",hue="Transmission", kde=True,bins=60)
+  plt.axvline(df["Price"].mean(),0,1,c="blue" )
+  plt.axvline(df["Price"].median(),0,1,c="magenta" )
+  plt.title(f"{'Price'} | Skewness: {round(df['Price'].skew(), 2)}")
+```
+There seems to be an entry error in one or more car prices. One or more prices are significantly off. Let's dig into this.
 
+ - We'll identify car prices Over $170K
+```py
+# The boxplot shows several outliers, but two huge ones stand out. Let's identify them.
+  # Find the cars with prices more than $170K
+  df[df["Price"]>=170000].head()
 ```
 
- - Violin plot of all numerical variables**
+It is unlikely a ford car will be priced at $230K. Let's find out the price range for this Ford brand of same model
+ 
 ```py
-
+  # Find the cars with prices more than $150K
+  df[(df["Model"]=="Escape") & (df["Trim"]=="Titanium") & (df["Car Year"]==2014)]
 ```
 
- - Violin plot of all numerical variables**
-```py
+We can notice that this Ford model sold for between $20K and $25K, so this car may have been priced at $23K and not $230K. There, I'll update that entry accordingly.
 
+```py
+  # It is clear that the 2014 Ford Titanium $230000 entry was an entry error. We'll correct it to 23K, which is about its price level.
+  df.loc[344905, "Price"]= 23000 # Replace the 230K value with 23K using the replace by index
+  # Find the cars with prices more than $170K to check if it's been corrected
+  df[df["Price"]>=170000].head()
 ```
 
- - Violin plot of all numerical variables**
-```py
+#### _Next, we'll categorize the cars into two buckets, i.e., "Standard" and "Luxury"_
 
+```py
+  # Use lambda and .apply with an If statement to create a new column to categorize the cars into Luxury or standard cars
+  df['Type'] = df['Price'].apply(lambda x: 'Luxury' if x >= 80000 else 'Standard')
 ```
+
+- Visualizing the histogram of standard cars
+```py
+  # Histogram of Standard cars.
+  # Create subplots histogram of the Selling Price by transmission type 
+  g = sns.FacetGrid(df[df["Type"]=="Standard"] , col="Transmission", height=5,palette="husl")
+  g.map_dataframe(sns.histplot, x="Price", kde=True, bins=32)
+  g.add_legend()
+```
+
+- Visualizing the Violin plot of standard cars for a closer look at the distribution
+```py
+  #Violinplot of Standard cars.
+  # Create Violinplots of the Selling Price by transmission type 
+  print("Violinplot of Standard cars by Transmission Type")
+  g = sns.FacetGrid(df[df["Type"]=="Standard"] , col="Transmission", height=5,palette="husl")
+  g.map_dataframe(sns.violinplot, x="Price")
+  g.add_legend()
+```
+
+
+- Visualizing the histogram of Luxury cars
+```py
+  # Histogram of luxurious cars.
+  # Create subplots histogram of the Selling Price by transmission type 
+  g = sns.FacetGrid(df[df["Type"]=="Luxury"] , col="Transmission", height=5, palette="husl")
+  g.map_dataframe(sns.histplot, x="Price", kde=True, bins=32)
+  g.add_legend()
+```
+
+- Visualizing the Violin plot of Luxury cars for a closer look at the distribution
+```py
+  #Violinplot of Luxury cars.
+  # Create violinplots of the Selling Price by transmission type 
+  print("Violinplot of Luxury cars by Transmission Type")
+  g = sns.FacetGrid(df[df["Type"]=="Luxury"] , col="Transmission", height=5,palette="husl")
+  g.map_dataframe(sns.violinplot, x="Price")
+  g.add_legend()
+```
+
+
+
 
 ### **Results and Finding**s
 The analysis revealed several key findings regarding trends in car prices and factors influencing pricing. Notable insights include the impact of car age and mileage on pricing, differences in pricing based on transmission type, and potential correlations between car colors and prices.
