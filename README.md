@@ -358,11 +358,15 @@ We can notice that this Ford model sold for between $20K and $25K, so this car m
 ```
 
 
-### **Results and Finding**s
-The analysis revealed several key findings regarding trends in car prices and factors influencing pricing. Notable insights include the impact of car age and mileage on pricing, differences in pricing based on transmission type, and potential correlations between car colors and prices.
+### **Results and Findings**
+The analysis revealed several key findings regarding trends in car prices and factors influencing pricing. Notable insights include the impact of car age and mileage on pricing, differences in pricing based on transmission type, and potential correlations between car colors and prices. The findings are summarized as follows:
+ - The cars dataset has ~559K entries; some records had null values. I decided to drop rows with null values since there is still a considerable dataset size.
+ - The cars' prices, on average, have grown significantly over the years, with automatic transition cars being not just the most popular but higher in price than their manual counterpart. Ford, Chevrolet, Nissan, Toyota, and Dodge are the top five popular cars in the US for the years in review.
+ - The cars' year of manufacture and condition positively correlate with price, i.e., car prices tend to increase as the cars' condition and recency increase. Conversely, car prices tend to decrease with an increase in age and mileage.
+ - The analysis showed an insignificant relationship between car colors and price. However, colors gray, blue, and red are slightly higher in price than other car colors.
 
 ### **Recommendations**
-Based on the findings of the analysis, recommendations are provided for stakeholders in the automotive industry, including dealerships, manufacturers, and consumers. Suggestions may include adjusting pricing strategies, considering factors influencing pricing in inventory management, and understanding consumer preferences.
+Given the scope of this project is limited, more analysis will be needed to allow stakeholders to price their cars appropriately. However, adjusting pricing strategies based on factors such as the aforementioned ones, body type, location, dealership type, market segmentation, etc. is a highly recommended requirement for considering factors influencing pricing in inventory management, and understanding consumer preferences.
 
 ### **Limitations**
 It's important to acknowledge the limitations of the analysis, such as potential biases in the dataset, limitations of the chosen analytical methods, and constraints of available data. These factors may impact the generalizability and reliability of the findings.
