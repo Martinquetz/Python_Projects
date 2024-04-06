@@ -54,7 +54,7 @@ The dataset underwent thorough cleaning and preparation to ensure data quality a
     df.describe().round()
 ```
 
-#### _Transform the dataframe i.e., add, remove, and melt relevant columns_
+#### _Transform the dataframe: Extract Day, Month, and Year from Date Column_
 ```py
   # Convert saledate type to datetime
   df["saledate"] = pd.to_datetime(df["saledate"])
@@ -66,6 +66,27 @@ The dataset underwent thorough cleaning and preparation to ensure data quality a
   df["sale month"] = df["saledate"].apply(lambda time: time.month)  # Extracts month from the saledate
   df["sale year"] = df["saledate"].apply(lambda time: time.year)  # Extracts day of week from the saledate
 ```
+
+#### _Transform the Dataframe: Add, Remove Columns_
+```py
+  # Add a car age at sale time column
+  df["age"] = df["sale year"]-df["year"]
+  
+  # Change the values of the State column to upper case
+  df["state"] = df["state"].str.upper()
+  
+  # map the colors with numbers
+  color_map ={'black': 1,'white': 2,'silver': 3,'gray': 4,'blue': 5,'red': 6,'—': 20,'gold': 7,'green': 8,'burgundy': 9,'beige': 10,
+              'brown': 11,'orange': 12,'purple': 13,'off-white': 14,'yellow': 15,'charcoal': 16,'turquoise': 17,'pink': 18,'lime': 19}
+  
+  # Create Color Id column 
+  df["color id"] = df["color"].replace(color_map)
+  
+  
+  # drop the columns that might not be of use for now.
+  df.drop(["Vin","Mmr", "Saledate","Seller"], axis=1, inplace=True)
+```
+
 
 
 ### **Analysis**
