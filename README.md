@@ -92,6 +92,26 @@ The dataset underwent thorough cleaning and preparation to ensure data quality a
 ### **Analysis**
 Exploratory data analysis (EDA) techniques were employed to uncover insights from the dataset. This involved visualizing distributions, trends, and correlations between variables using statistical measures and visualization techniques such as histograms, scatter plots, heat maps, and correlation matrices.
 
+#### _Now, we'll visually explore the dataset to find trends, patterns, and outliers_
+```py
+  # create an object of all the numerical variables
+  numerical_columns = df.select_dtypes(include=["int64", "float64"]).columns
+  
+  # Plot a histogram of each numerical feature
+  plt.figure(figsize=(14, len(numerical_columns)*3))
+  # Use the enumerate object which yields pairs containing a count (from start, which defaults to zero) and a value yielded by the iterable argument .enumerate is useful for obtaining an indexed list: (0, seq[0]),(1, seq[01]),(2, seq[2]),...
+  for idx, feature in enumerate(numerical_columns, 1):
+      plt.subplot(len(numerical_columns), 2, idx)
+      sns.histplot(df[feature], kde=True)
+      plt.title(f"{feature} | skewness: {round(df[feature].skew(), 2)} | Std Dev: {round(df[feature].std(), 2)}")
+      plt.axvline(df[feature].mean(), 0,1, c="blue")
+      plt.axvline(df[feature].median(), 0,1, c="magenta")
+  # adjust layout and show plots
+  plt.tight_layout()
+  #plt.show
+```
+
+
 ### **Results and Finding**s
 The analysis revealed several key findings regarding trends in car prices and factors influencing pricing. Notable insights include the impact of car age and mileage on pricing, differences in pricing based on transmission type, and potential correlations between car colors and prices.
 
