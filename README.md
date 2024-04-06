@@ -112,7 +112,7 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   #plt.show
 ```
 
-**  - Box plot of all numerical variables**
+ - Box plot of all numerical variables
 ```py
   # Boxplot of each numeriacal feature
   plt.figure(figsize=(14, len(numerical_columns)*3))
@@ -127,7 +127,7 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   plt.show
 ```
 
-**- Violin plot of all numerical variables**
+ - Violin plot of all numerical variables
 ```py
   # Violinplot of each numeriacal feature
   plt.figure(figsize=(14, len(numerical_columns)*3))
@@ -142,20 +142,20 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   plt.show
 ```
 
-**  - Pair plot of all numerical variables: shows a quick view of correlation among the numerical variables**
+ - Pair plot of all numerical variables: shows a quick view of correlation among the numerical variables
 ```py
   # Create a chart to show relationships between the various numerical columns
   plt.figure(figsize=(12,10))
   sns.pairplot(df)
 ```
 
-**  - Display the correlation of the numerical variables by numbers**
+ - Display the correlation of the numerical variables by numbers
 ```py
   # check the correlation of the numerical columns
   df.corr()
 ```
 
-**  - Create a heat map of all numerical variables**
+ - Create a heat map of all numerical variables
 ```py
   # create a heatmap of the numerical columns
   plt.figure(figsize=(8,6))
@@ -163,26 +163,132 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   plt.title("Correlation Heatmap")
 ```
 
-**  - Violin plot of all numerical variables**
+#### _Let's look closer into the relationship between the pairs of variables from our stated objectives_
+
+ - Examining the relationship between Colour and Price.
+```py
+  # Create a jointplot of Colour Id vs Selling Price by car condition
+  plt.figure(figsize=(7,5))
+  sns.jointplot(data=df, y="Color Id", x="Price", palette="pastel1", height=7, kind="reg")
+```
+
+ - Examining the relationship between Mileage and Price
+```py
+  # Create a jointplot of Odometer vs Selling Price by car condition
+  plt.figure(figsize=(7,5))
+  sns.jointplot(data=df, y="Odometer", x="Price", hue="Transmission", palette="husl", height=7)
+```
+
+ - Box Plot Automatic Transmissions vs Manual
+```py
+  # Boxplot of Selling price by Transmission type
+  plt.figure(figsize=(7,5))
+  sns.boxplot(y="Price", x="Transmission", data=df, palette="Set3")
+```
+
+ - Regression plot of all Car Age vs Price by Transmission type
+```py
+  # Create subplots of Age and Selling Price by transmission type 
+  g = sns.FacetGrid(df, col="Transmission", height=5,palette="husl")
+  g.map_dataframe(sns.regplot, x="Age", y="Price")
+  g.add_legend()
+```
+
+
+#### _Now, let's visually examine the categorical variables_
+
+ - Visualizing the categorical variables
+```py
+  # Create an object of a list of the numerical columns
+  categorical_columns = ['Transmission', 'State', 'Color','Interior', 'Sale Day']
+  
+  # plot distribution of each categorical column
+  fig, axes = plt.subplots(nrows=3, ncols=2, figsize=(14, 13))
+  axes = axes.ravel()
+  # Use the enumerate object which yields pairs containing a count (from start, which defaults to zero) and a value yielded by the iterable argument .enumerate is useful for obtaining an indexed list: (0, seq[0]),(1, seq[01]),(2, seq[2]),...
+  for idx, column in enumerate(categorical_columns):
+      #plt.subplot(len(categorical_columns), 2, idx)
+      g=sns.countplot(x=df[column], data=df, ax=axes[idx])
+      for container in axes[idx].containers:
+          axes[idx].bar_label(container, color='grey', size=10)
+      g.set_xticklabels(g.get_xticklabels(), rotation=90)
+      axes[idx].set_title(f'Count Plot of {column.title()}')
+      axes[idx].set_xlabel(column.title())
+      axes[idx].set_ylabel('Count')    
+      #plt.title(f"{column} | skewness: {round(df[column].skew(), 2)}")
+      #plt.axvline(df[column].mean(), 0,1, c="blue")
+      #plt.axvline(df[column].median(), 0,1, c="magenta")
+  # adjust layout and show plots
+  plt.tight_layout()
+  #plt.show
+```
+
+#### _We'll now check out popular brands, their average price, and price trends over time_
+ - Chart of the top 30 car brands
+```py
+  # find the 30 most popular car Brand
+  n = 30 # The top x number of cars to view
+  popular = df["Make"].value_counts().head(n)
+  plt.figure(figsize=(12,7))
+  sns.barplot(x=popular.values, y=popular.index)
+  #g.set_xticklabels(g.get_xticklabels(), rotation=90)  # this code helps set the xticklabel rotation without listing the x variables
+  plt.title(f"Top {n} Popular Car Brands")
+  plt.xlabel('Frequency')
+  plt.ylabel('Car Make')
+  plt.bar_label(container, color='grey', size=8)
+  plt.tight_layout()
+  #plt.xticks(rotation=90) :- Although this code sets the xticks at 90 degree, it however, lists all the x variables first before the chart
+```
+
+ - Chart of 30 most Expensive Brands
+```py
+  # Show cars Makes average prices. Group df by car's year of manufactured
+  dfg_make=df.groupby("Make")["Price"].mean().round().sort_values(ascending=False) # converts to series
+  
+  # Set variable to hold the top-n number to review
+  n = 30 # top n cars by price view
+  #Plot the chart
+  pricey = dfg_make.head(n)
+  plt.figure(figsize=(12,9))
+  sns.barplot(x=dfg_make.values, y=dfg_make.index)
+  plt.title(f"Top {n} Pricey Car Brands")
+  plt.xlabel('Average Price ($)')
+  plt.ylabel('Car Make')
+  plt.bar_label(container, color='black', size=8)
+  plt.tight_layout()
+```
+
+ - Trend of Car Prices Over Time
+```py
+  # Show how cars prices have trended over the years. Group df by car's year of manufactured
+  dfg=df.groupby("Car Year")["Price"].mean().round() # converts to series
+  
+  # plot the line chart
+  plt.figure(figsize=(10,6))
+  sns.lineplot(x=dfg.index, y=dfg.values)
+  plt.title("Historic Yearly Average Car Sale Price")
+  plt.ylabel('Avg. Car Prices ($)')
+```
+
+ - Violin plot of all numerical variables**
 ```py
 
 ```
 
-**  - Violin plot of all numerical variables**
+ - Violin plot of all numerical variables**
 ```py
 
 ```
 
-**  - Violin plot of all numerical variables**
+ - Violin plot of all numerical variables**
 ```py
 
 ```
 
-**  - Violin plot of all numerical variables**
+ - Violin plot of all numerical variables**
 ```py
 
 ```
-
 
 ### **Results and Finding**s
 The analysis revealed several key findings regarding trends in car prices and factors influencing pricing. Notable insights include the impact of car age and mileage on pricing, differences in pricing based on transmission type, and potential correlations between car colors and prices.
