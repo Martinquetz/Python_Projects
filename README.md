@@ -93,7 +93,7 @@ The dataset underwent thorough cleaning and preparation to ensure data quality a
 Exploratory data analysis (EDA) techniques were employed to uncover insights from the dataset. This involved visualizing distributions, trends, and correlations between variables using statistical measures and visualization techniques such as histograms, scatter plots, heat maps, and correlation matrices.
 
 #### _Now, we'll visually explore the dataset to find trends, patterns, and outliers_
-**. Histogram of all numerical variables**
+ - Histogram of all numerical variables
 ```py
   # create an object of all the numerical variables
   numerical_columns = df.select_dtypes(include=["int64", "float64"]).columns
