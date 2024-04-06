@@ -10,19 +10,19 @@ The dataset used in this project was sourced from Kaggel. The dataset contains h
 Python programming language and its data analysis libraries, including Pandas, NumPy, Matplotlib, Seaborn, and Plotly, were utilized for data manipulation, visualization, and analysis in this project. Jupyter Notebook was employed as the development environment for coding and documentation.
 
 #### _Import Necessary Libraries_
-```
-# Import necessary libraries
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import datetime
-import calendar
-import plotly.express as px
-import plotly.graph_objects as go
-from dash import Dash, dcc, html
-sns.set_theme(style='darkgrid', palette='pastel')
-%matplotlib inline
+```py
+  # Import necessary libraries
+  import numpy as np
+  import pandas as pd
+  import matplotlib.pyplot as plt
+  import seaborn as sns
+  import datetime
+  import calendar
+  import plotly.express as px
+  import plotly.graph_objects as go
+  from dash import Dash, dcc, html
+  sns.set_theme(style='darkgrid', palette='pastel')
+  %matplotlib inline
 ```
 
 
