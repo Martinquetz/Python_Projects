@@ -350,7 +350,12 @@ We can notice that this Ford model sold for between $20K and $25K, so this car m
   g.add_legend()
 ```
 
-
+ - An Interactive bar chart to check the trends of various variables over time
+```py
+  fig = px.bar(data_frame=dfg)
+  fig_widget = go.FigureWidget(fig)
+  fig_widget
+```
 
 
 ### **Results and Finding**s
