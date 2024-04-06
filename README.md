@@ -93,6 +93,7 @@ The dataset underwent thorough cleaning and preparation to ensure data quality a
 Exploratory data analysis (EDA) techniques were employed to uncover insights from the dataset. This involved visualizing distributions, trends, and correlations between variables using statistical measures and visualization techniques such as histograms, scatter plots, heat maps, and correlation matrices.
 
 #### _Now, we'll visually explore the dataset to find trends, patterns, and outliers_
+**  - Histogram of all numerical variables**
 ```py
   # create an object of all the numerical variables
   numerical_columns = df.select_dtypes(include=["int64", "float64"]).columns
@@ -109,6 +110,77 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   # adjust layout and show plots
   plt.tight_layout()
   #plt.show
+```
+
+**  - Box plot of all numerical variables**
+```py
+  # Boxplot of each numeriacal feature
+  plt.figure(figsize=(14, len(numerical_columns)*3))
+  # Use the enumerate object which yields pairs containing a count (from start, which defaults to zero) and a value yielded by the iterable argument .enumerate is useful for obtaining an indexed list: (0, seq[0]),(1, seq[01]),(2, seq[2]),...
+  for idx, feature in enumerate(numerical_columns, 1):
+      plt.subplot(len(numerical_columns), 2, idx)
+      sns.boxplot(df[feature])
+      plt.title(f"{feature} | skewness: {round(df[feature].skew(), 2)} | Std Dev: {round(df[feature].std(), 2)}")
+  
+  # adjust layout and show plots
+  plt.tight_layout()
+  plt.show
+```
+
+**  - Violin plot of all numerical variables**
+```py
+  # Violinplot of each numeriacal feature
+  plt.figure(figsize=(14, len(numerical_columns)*3))
+  # Use the enumerate object which yields pairs containing a count (from start, which defaults to zero) and a value yielded by the iterable argument .enumerate is useful for obtaining an indexed list: (0, seq[0]),(1, seq[01]),(2, seq[2]),...
+  for idx, feature in enumerate(numerical_columns, 1):
+      plt.subplot(len(numerical_columns), 2, idx)
+      sns.violinplot(df[feature])
+      plt.title(f"{feature} | skewness: {round(df[feature].skew(), 2)} | Mean: {round(df[feature].mean(), 2)}")
+  
+  # adjust layout and show plots
+  plt.tight_layout()
+  plt.show
+```
+
+**  - Pair plot of all numerical variables: shows a quick view of correlation among the numerical variables**
+```py
+  # Create a chart to show relationships between the various numerical columns
+  plt.figure(figsize=(12,10))
+  sns.pairplot(df)
+```
+
+**  - Display the correlation of the numerical variables by numbers**
+```py
+  # check the correlation of the numerical columns
+  df.corr()
+```
+
+**  - Create a heat map of all numerical variables**
+```py
+  # create a heatmap of the numerical columns
+  plt.figure(figsize=(8,6))
+  sns.heatmap(df.corr(), annot=True, fmt=".2f", cmap="Pastel1", linewidths=1)
+  plt.title("Correlation Heatmap")
+```
+
+**  - Violin plot of all numerical variables**
+```py
+
+```
+
+**  - Violin plot of all numerical variables**
+```py
+
+```
+
+**  - Violin plot of all numerical variables**
+```py
+
+```
+
+**  - Violin plot of all numerical variables**
+```py
+
 ```
 
 
