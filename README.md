@@ -28,6 +28,13 @@ Python programming language and its data analysis libraries, including Pandas, N
 
 ### **Data Cleaning and Preparation**
 The dataset underwent thorough cleaning and preparation to ensure data quality and consistency. Tasks included handling missing values, removing duplicates, standardizing data formats, and encoding categorical variables. This process aimed to create a clean and structured dataset suitable for analysis.
+#### _I Read The Dataset, View, Checked the data type & Summary Statistics, and Cleaned it_
+```py
+# import the cars data
+  df = pd.read_csv(r"C:\Users\Martin\Downloads\car_prices.csv", error_bad_lines=False, warn_bad_lines=True)
+  df.head()
+``
+
 
 ### **Analysis**
 Exploratory data analysis (EDA) techniques were employed to uncover insights from the dataset. This involved visualizing distributions, trends, and correlations between variables using statistical measures and visualization techniques such as histograms, scatter plots, heat maps, and correlation matrices.
