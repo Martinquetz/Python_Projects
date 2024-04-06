@@ -20,3 +20,21 @@ Detailed report documenting findings from the EDA, including visualizations and 
 Visual representations of trends and relationships within the dataset of USA used cars during this period.
 Insights and recommendations tailored to the USA automotive market based on the analysis outcomes.
 Presentation summarizing key findings and implications for stakeholders within the USA automotive industry.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
