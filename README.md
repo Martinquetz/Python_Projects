@@ -25,7 +25,7 @@ Based on the findings of the analysis, recommendations are provided for stakehol
 It's important to acknowledge the limitations of the analysis, such as potential biases in the dataset, limitations of the chosen analytical methods, and constraints of available data. These factors may impact the generalizability and reliability of the findings.
 
 ### References
-Mobius: [background and datasets from kaggle.com can be assessed here]([https://www.kaggle.com/datasets/tunguz/used-car-auction-prices?resource=download]).
+[background and datasets from kaggle.com can be assessed here] --https://www.kaggle.com/datasets/tunguz/used-car-auction-prices?resource=download
 
 
 
