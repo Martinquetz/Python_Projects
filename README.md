@@ -1,6 +1,17 @@
 ## An EDA of US Used Cars Datasets
 #### Exploring Trends and Factors Affecting Pricing of USA Used Cars (1990-2015)
 
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Data Sources and Description](#data-sources-and-description)
+- [Tools Used](#tools-used)
+- [Data Cleaning and Preparation](#data-cleaning-and-preparation)
+- [Analysis](#analysis)
+- [Results and Findings](#results-and-findings)
+- [Recommendations](#recommendations)
+- [Limitations](#limitations)
+- [References](#references)
+
 ### **Project Overview** 
 This project aims to conduct an exploratory analysis of data on used cars in the USA from 1990 to 2015. The objective is to uncover insights into the trends of car prices over this timeframe and analyze the impact of factors such as car age, mileage, transmission type, and car colors on pricing. By examining a comprehensive dataset of used car listings, we seek to understand the underlying patterns and correlations contributing to pricing variations in the US automotive market during this period.
 
@@ -420,10 +431,10 @@ The analysis revealed several key findings regarding trends in car prices and fa
 Since this project has a limited scope, more analysis will be needed to allow stakeholders to price their cars appropriately. However, adjusting pricing strategies based on factors such as the aforementioned ones, body type, location, dealership type, market segmentation, etc., is highly recommended for considering factors influencing pricing in inventory management and understanding consumer preferences.
 
 ### **Limitations**
-The data set used for this analysis is about nine years old and, therefore should not be used for any real-life decision. The price analysis did not consider variations due to body types and trims. These elements' influence on price still needs to be considered. Also, this project is only aimed at discovery so any interest in price forecasting will need to involve machine learning aspects.
+The data set used for this analysis is about nine years old and should not be used for any real-life decision. The price analysis did not consider variations due to body types and trims. The influence of these elements on price still needs to be considered. Also, this project only aims at exploration and discovery, so any interest in price forecasting must involve machine learning.
 
 ### References
-[background and datasets from kaggle.com can be assessed here](https://www.kaggle.com/datasets/tunguz/used-car-auction-prices?resource=download)
+[background and datasets from kaggle.com can be assessed here](https://www.kaggle.com/datasets/tunguz/used-car-auction-prices?resource=download).
 Additional resources used include [Seaborn](https://seaborn.pydata.org/index.html), [Plotly](https://plotly.com/graphing-libraries/), and [pandas](https://pandas.pydata.org/pandas-docs/stable/index.html) documentation.
 
 
