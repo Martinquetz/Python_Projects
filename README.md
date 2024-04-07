@@ -1,6 +1,7 @@
 ## An Exploratory Data Analysis of US Used Cars
 #### Exploring Trends and Factors Affecting Pricing of USA Used Cars (1990-2015)
 
+
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Data Sources and Description](#data-sources-and-description)
