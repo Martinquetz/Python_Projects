@@ -34,6 +34,9 @@ The dataset underwent thorough cleaning and preparation to ensure data quality a
   df = pd.read_csv(r"C:\Users\Martin\Downloads\car_prices.csv", error_bad_lines=False, warn_bad_lines=True)
   df.head()
 ```
+![df-head](https://github.com/Martinquetz/Python_Projects/assets/92187086/7eed09a5-f302-41f1-9df6-0edb125fa1ce)
+
+
 #### _Checked the data type & Summary Statistics_
 ```py
   # Check the data info i.e. shape & data type
