@@ -1,10 +1,13 @@
 ## An EDA of US Used Cars Datasets
-### Exploring Trends and Factors Affecting Pricing of USA Used Cars (1990-2015)
+#### Exploring Trends and Factors Affecting Pricing of USA Used Cars (1990-2015)
+
 ### **Project Overview** 
 This project aims to conduct an exploratory analysis of data on used cars in the USA from 1990 to 2015. The objective is to uncover insights into the trends of car prices over this timeframe and analyze the impact of factors such as car age, mileage, transmission type, and car colors on pricing. By examining a comprehensive dataset of used car listings, we seek to understand the underlying patterns and correlations contributing to pricing variations in the US automotive market during this period.
 
+
 ### **Data Sources and Description**
 The dataset used in this project was sourced from Kaggel. The dataset contains historical car auction sales prices scraped from outside internet sources. According to the author, the dataset was collected in 2015 and will not be updated. The dataset contains information on used cars in the USA, including car make, model, year, mileage, transmission type, color, price, etc. The dataset has ~559k entries covering the period from 1990 to 2015.
+
 
 ### **Tools Used**
 Python programming language and its data analysis libraries, including Pandas, NumPy, Matplotlib, Seaborn, and Plotly, were utilized for data manipulation, visualization, and analysis in this project. Jupyter Notebook was employed as the development environment for coding and documentation.
@@ -28,6 +31,7 @@ Python programming language and its data analysis libraries, including Pandas, N
 
 ### **Data Cleaning and Preparation**
 The dataset underwent thorough cleaning and preparation to ensure data quality and consistency. Tasks included handling missing values, removing duplicates, standardizing data formats, and encoding categorical variables. This process aimed to create a clean and structured dataset suitable for analysis.
+
 #### _Read The Dataset and View it_
 ```py
   # import the car data
@@ -93,7 +97,6 @@ The dataset underwent thorough cleaning and preparation to ensure data quality a
   # drop the columns that might not be of use for now.
   df.drop(["Vin","Mmr", "Saledate","Seller"], axis=1, inplace=True)
 ```
-
 
 
 ### **Analysis**
@@ -220,7 +223,7 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
 ![price-vs-age-regplot](https://github.com/Martinquetz/Python_Projects/assets/92187086/8ac85003-6604-497b-8028-2b4124dcf9c5)
 
 
-#### _Now, let's visually examine the categorical variables_
+#### _Next, let's visually examine the categorical variables_
 
  - Visualizing the categorical variables
 ```py
@@ -412,14 +415,16 @@ The analysis revealed several key findings regarding trends in car prices and fa
  - The cars' year of manufacture and condition positively correlate with price, i.e., car prices tend to increase as the cars' condition and recency increase. Conversely, car prices tend to decrease with an increase in age and mileage.
  - The analysis showed an insignificant relationship between car colors and price. However, colors gray, blue, and red are slightly higher in price than other car colors.
 
+
 ### **Recommendations**
 Since this project has a limited scope, more analysis will be needed to allow stakeholders to price their cars appropriately. However, adjusting pricing strategies based on factors such as the aforementioned ones, body type, location, dealership type, market segmentation, etc., is highly recommended for considering factors influencing pricing in inventory management and understanding consumer preferences.
 
 ### **Limitations**
-It's important to acknowledge the limitations of the analysis, such as potential biases in the dataset, limitations of the chosen analytical methods, and constraints of available data. These factors may impact the generalizability and reliability of the findings.
+The data set used for this analysis is about nine years old and, therefore should not be used for any real-life decision. The price analysis did not consider variations due to body types and trims. These elements' influence on price still needs to be considered. Also, this project is only aimed at discovery so any interest in price forecasting will need to involve machine learning aspects.
 
 ### References
-[background and datasets from kaggle.com can be assessed here] --https://www.kaggle.com/datasets/tunguz/used-car-auction-prices?resource=download
+[background and datasets from kaggle.com can be assessed here](https://www.kaggle.com/datasets/tunguz/used-car-auction-prices?resource=download)
+Additional resources used include [Seaborn](https://seaborn.pydata.org/index.html), [Plotly](https://plotly.com/graphing-libraries/), and [pandas](https://pandas.pydata.org/pandas-docs/stable/index.html) documentation.
 
 
 
