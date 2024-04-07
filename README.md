@@ -44,6 +44,8 @@ The dataset underwent thorough cleaning and preparation to ensure data quality a
   # Check the shape
   df.shape
 ```
+![df-info](https://github.com/Martinquetz/Python_Projects/assets/92187086/58862d42-408b-4335-9afd-69b56ce2e453)
+
 
 #### _Dropped Null Values & Check the Summary Statistics_
 ```py
@@ -56,6 +58,8 @@ The dataset underwent thorough cleaning and preparation to ensure data quality a
     # Check for statistical details of the df
     df.describe().round()
 ```
+![df-summary-statistics](https://github.com/Martinquetz/Python_Projects/assets/92187086/f5496c10-e830-4371-8bdc-93b9572e7142)
+
 
 #### _Transform the dataframe: Extract Day, Month, and Year from Date Column_
 ```py
@@ -114,6 +118,8 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   plt.tight_layout()
   #plt.show
 ```
+![num-df-hist](https://github.com/Martinquetz/Python_Projects/assets/92187086/36d76f1b-dbb4-4fa7-85c6-c897a7443d34)
+
 
  - Box plot of all numerical variables
 ```py
@@ -129,6 +135,8 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   plt.tight_layout()
   plt.show
 ```
+![num-df-boxplot](https://github.com/Martinquetz/Python_Projects/assets/92187086/bad61619-a5b0-448f-a49f-4e6168c9d8ae)
+
 
  - Violin plot of all numerical variables
 ```py
@@ -144,6 +152,8 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   plt.tight_layout()
   plt.show
 ```
+![num-df-violin](https://github.com/Martinquetz/Python_Projects/assets/92187086/88f327b4-2aa5-4ac3-9b47-cd69c925af08)
+
 
  - Pair plot of all numerical variables: shows a quick view of correlation among the numerical variables
 ```py
@@ -151,12 +161,16 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   plt.figure(figsize=(12,10))
   sns.pairplot(df)
 ```
+![df-pairplot](https://github.com/Martinquetz/Python_Projects/assets/92187086/6c2a06cc-9f3a-4e79-a627-bd4e53cdf1c9)
+
 
  - Display the correlation of the numerical variables by numbers
 ```py
   # check the correlation of the numerical columns
   df.corr()
 ```
+![df-corr](https://github.com/Martinquetz/Python_Projects/assets/92187086/387237f7-5ea0-451a-bb77-52a33f6cc8b2)
+
 
  - Create a heat map of all numerical variables
 ```py
@@ -165,6 +179,7 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   sns.heatmap(df.corr(), annot=True, fmt=".2f", cmap="Pastel1", linewidths=1)
   plt.title("Correlation Heatmap")
 ```
+![corr-heatmap](https://github.com/Martinquetz/Python_Projects/assets/92187086/3244e334-eaca-4b7f-9248-ed73d6cf7d64)
 
 #### _Let's look closer into the relationship between the pairs of variables from our stated objectives_
 
@@ -174,6 +189,8 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   plt.figure(figsize=(7,5))
   sns.jointplot(data=df, y="Color Id", x="Price", palette="pastel1", height=7, kind="reg")
 ```
+![color-vs-price-jointplot](https://github.com/Martinquetz/Python_Projects/assets/92187086/e26eef48-2c45-4ed8-b6f1-67d7b3556301)
+
 
  - Examining the relationship between Mileage and Price
 ```py
@@ -181,6 +198,8 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   plt.figure(figsize=(7,5))
   sns.jointplot(data=df, y="Odometer", x="Price", hue="Transmission", palette="husl", height=7)
 ```
+![mileage-vs-price-jointplot](https://github.com/Martinquetz/Python_Projects/assets/92187086/3b930f1c-1de3-474f-a44b-d85b4e2ae361)
+
 
  - Box Plot Automatic Transmissions vs Manual
 ```py
@@ -188,6 +207,8 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   plt.figure(figsize=(7,5))
   sns.boxplot(y="Price", x="Transmission", data=df, palette="Set3")
 ```
+![price-by-transmission-boxplot](https://github.com/Martinquetz/Python_Projects/assets/92187086/7c8fc87a-1d22-411e-8e48-1eec8d56bd6a)
+
 
  - Regression plot of all Car Age vs Price by Transmission type
 ```py
@@ -196,6 +217,7 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   g.map_dataframe(sns.regplot, x="Age", y="Price")
   g.add_legend()
 ```
+![price-vs-age-regplot](https://github.com/Martinquetz/Python_Projects/assets/92187086/8ac85003-6604-497b-8028-2b4124dcf9c5)
 
 
 #### _Now, let's visually examine the categorical variables_
@@ -225,6 +247,8 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   plt.tight_layout()
   #plt.show
 ```
+![cate-dfcountplot](https://github.com/Martinquetz/Python_Projects/assets/92187086/5fde4ecf-be24-4217-88fd-f539857bf9ba)
+
 
 #### _We'll now check out popular brands, their average price, and price trends over time_
  - Chart of the top 30 car brands
@@ -242,14 +266,16 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   plt.tight_layout()
   #plt.xticks(rotation=90) :- Although this code sets the xticks at 90 degree, it however, lists all the x variables first before the chart
 ```
+![top-popular](https://github.com/Martinquetz/Python_Projects/assets/92187086/0b59538a-6020-428f-86ff-b202f5e33c5d)
 
- - Chart of 30 Most Expensive Brands
+
+ - Chart of 20 Most Expensive Brands
 ```py
   # Show cars Makes average prices. Group df by car's year of manufactured
   dfg_make=df.groupby("Make")["Price"].mean().round().sort_values(ascending=False) # converts to series
   
   # Set variable to hold the top-n number to review
-  n = 30 # top n cars by price view
+  n =20 # top n cars by price view
   #Plot the chart
   pricey = dfg_make.head(n)
   plt.figure(figsize=(12,9))
@@ -260,6 +286,8 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   plt.bar_label(container, color='black', size=8)
   plt.tight_layout()
 ```
+![top-20-pricey](https://github.com/Martinquetz/Python_Projects/assets/92187086/d0828032-8778-4602-9efc-887ab41eb99f)
+
 
  - Trend of Car Prices Over Time
 ```py
@@ -272,6 +300,8 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   plt.title("Historic Yearly Average Car Sale Price")
   plt.ylabel('Avg. Car Prices ($)')
 ```
+![price-trend](https://github.com/Martinquetz/Python_Projects/assets/92187086/d76283af-1b82-4e9c-b698-a05f907784c3)
+
 
  - Checking the Distribution of Prices by Transmission Type
 ```py
@@ -282,6 +312,8 @@ Exploratory data analysis (EDA) techniques were employed to uncover insights fro
   plt.axvline(df["Price"].median(),0,1,c="magenta" )
   plt.title(f"{'Price'} | Skewness: {round(df['Price'].skew(), 2)}")
 ```
+![price-hist-by-transmission](https://github.com/Martinquetz/Python_Projects/assets/92187086/9c82f38e-fe23-4604-9a16-601c7ac76d2d)
+
 There seems to be an entry error in one or more car prices. One or more prices are significantly off. Let's dig into this.
 
  - We'll identify car prices Over $170K
@@ -290,13 +322,17 @@ There seems to be an entry error in one or more car prices. One or more prices a
   # Find the cars with prices more than $170K
   df[df["Price"]>=170000].head()
 ```
+![df-price-outlier](https://github.com/Martinquetz/Python_Projects/assets/92187086/7b6da011-cbb1-44af-9064-6d0c44875aee)
 
-It is unlikely a ford car will be priced at $230K. Let's find out the price range for this Ford brand of same model
+
+It is unlikely a Ford car will be priced at $230K. Let's find out the price range for this Ford brand of same model
  
 ```py
-  # Find the cars with prices more than $150K
+  # Find the Ford Escape model prices with same year and trim
   df[(df["Model"]=="Escape") & (df["Trim"]=="Titanium") & (df["Car Year"]==2014)]
 ```
+![ford -brand-prices](https://github.com/Martinquetz/Python_Projects/assets/92187086/c448ae99-f1a5-4319-9c16-246ae54ca37b)
+
 
 We can notice that this Ford model sold for between $20K and $25K, so this car may have been priced at $23K and not $230K. There, I'll update that entry accordingly.
 
@@ -322,6 +358,8 @@ We can notice that this Ford model sold for between $20K and $25K, so this car m
   g.map_dataframe(sns.histplot, x="Price", kde=True, bins=32)
   g.add_legend()
 ```
+![std-car-prices](https://github.com/Martinquetz/Python_Projects/assets/92187086/224512a7-154e-4c2a-a058-5cdc13a29dab)
+
 
 - Visualizing the Violin plot of standard cars for a closer look at the distribution
 ```py
@@ -332,6 +370,7 @@ We can notice that this Ford model sold for between $20K and $25K, so this car m
   g.map_dataframe(sns.violinplot, x="Price")
   g.add_legend()
 ```
+![std-cars-violinplot](https://github.com/Martinquetz/Python_Projects/assets/92187086/08958785-a129-49c9-a7ee-2aaaed3a26ed)
 
 
 - Visualizing the histogram of Luxury cars
@@ -342,16 +381,20 @@ We can notice that this Ford model sold for between $20K and $25K, so this car m
   g.map_dataframe(sns.histplot, x="Price", kde=True, bins=32)
   g.add_legend()
 ```
+![lux-cars-prices](https://github.com/Martinquetz/Python_Projects/assets/92187086/fe1d5c40-db66-4951-a358-3f6ba54c8622)
+
 
 - Visualizing the Violin plot of Luxury cars for a closer look at the distribution
 ```py
-  #Violinplot of Luxury cars.
+  # Violinplot of Luxury cars.
   # Create violinplots of the Selling Price by transmission type 
   print("Violinplot of Luxury cars by Transmission Type")
   g = sns.FacetGrid(df[df["Type"]=="Luxury"] , col="Transmission", height=5,palette="husl")
   g.map_dataframe(sns.violinplot, x="Price")
   g.add_legend()
 ```
+![lux-prices-violinplot](https://github.com/Martinquetz/Python_Projects/assets/92187086/4ab6fec9-2378-4ec3-b3be-07b688fa32e7)
+
 
  - An Interactive bar chart to check the trends of various variables over time
 ```py
@@ -359,6 +402,7 @@ We can notice that this Ford model sold for between $20K and $25K, so this car m
   fig_widget = go.FigureWidget(fig)
   fig_widget
 ```
+![price-plotly](https://github.com/Martinquetz/Python_Projects/assets/92187086/9c33d197-691a-40ef-9d33-5e0e6f597c81)
 
 
 ### **Results and Findings**
@@ -369,7 +413,7 @@ The analysis revealed several key findings regarding trends in car prices and fa
  - The analysis showed an insignificant relationship between car colors and price. However, colors gray, blue, and red are slightly higher in price than other car colors.
 
 ### **Recommendations**
-Given the scope of this project is limited, more analysis will be needed to allow stakeholders to price their cars appropriately. However, adjusting pricing strategies based on factors such as the aforementioned ones, body type, location, dealership type, market segmentation, etc. is a highly recommended requirement for considering factors influencing pricing in inventory management, and understanding consumer preferences.
+Since this project has a limited scope, more analysis will be needed to allow stakeholders to price their cars appropriately. However, adjusting pricing strategies based on factors such as the aforementioned ones, body type, location, dealership type, market segmentation, etc., is highly recommended for considering factors influencing pricing in inventory management and understanding consumer preferences.
 
 ### **Limitations**
 It's important to acknowledge the limitations of the analysis, such as potential biases in the dataset, limitations of the chosen analytical methods, and constraints of available data. These factors may impact the generalizability and reliability of the findings.
